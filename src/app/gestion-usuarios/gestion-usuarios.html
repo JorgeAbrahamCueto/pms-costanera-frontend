@@ -1,0 +1,155 @@
+<div class="container-fluid mt-4 px-4">
+    <h2 class="mb-4">Gestión de Usuarios</h2>
+
+    <div class="row">
+
+        <!-- FORMULARIO -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <form [formGroup]="usuarioForm">
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label>Nombres</label>
+                                <input type="text" class="form-control" formControlName="nombres">
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label>Apellidos</label>
+                                <input type="text" class="form-control" formControlName="apellidos">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label>DNI</label>
+                                <input type="text" class="form-control" formControlName="dni">
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label>Email</label>
+                                <input type="email" class="form-control" formControlName="email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label>Username</label>
+                                <input type="text" class="form-control" formControlName="username">
+                            </div>
+
+                            <div class="col-6 mb-3">
+                                <label>Contraseña</label>
+                                <input type="password" class="form-control" formControlName="password">
+                                <small class="text-muted" style="font-size: 0.75rem;">
+                                    Mín. 8 caracteres
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label>Asignar Rol</label>
+                            <select class="form-select" formControlName="rol">
+                                <option value="ADMINISTRADOR">Administrador</option>
+                                <option value="RECEPCIONISTA">Recepcionista</option>
+                                <option value="HOUSEKEEPING">Housekeeping</option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-secondary" (click)="nuevoUsuario()">
+                                Nuevo
+                            </button>
+
+                            <button type="button" class="btn btn-outline-primary" [disabled]="usuarioSeleccionado"
+                                (click)="grabarUsuario()">
+                                Grabar
+                            </button>
+
+                            <button type="button" class="btn btn-outline-success" [disabled]="!usuarioSeleccionado"
+                                (click)="editarUsuario()">
+                                Editar
+                            </button>
+
+                            <button type="button" class="btn btn-outline-danger" [disabled]="!usuarioSeleccionado"
+                                (click)="inactivarUsuario()">
+                                Inactivar
+                            </button>
+                            <button type="button" class="btn btn-outline-warning" [disabled]="!usuarioSeleccionado"
+                                (click)="activarUsuario()">
+                                Activar
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLA -->
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control form-control-lg border-danger"
+                            placeholder="Buscar por nombre, DNI, rol o estado..." (keyup)="onBuscar($event)">
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nombre Completo</th>
+                                    <th>DNI</th>
+                                    <th>Correo</th>
+                                    <th>Username</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let user of usuarios" (click)="seleccionarUsuario(user)"
+                                    style="cursor:pointer">
+
+                                    <td>{{ user.idUsuario }}</td>
+
+                                    <td>
+                                        {{ user.nombreusuario }}
+                                        {{ user.apellidousuario }}
+                                    </td>
+
+                                    <td>{{ user.dniusuario }}</td>
+
+                                    <td>{{ user.correousuario }}</td>
+
+                                    <td>{{ user.usernameusuario }}</td>
+
+                                    <td>{{ user.rol?.nombreRol }}</td>
+
+                                    <td>
+                                        <span class="badge" [ngClass]="user.estado === 'ACTIVO'
+                            ? 'bg-success'
+                            : 'bg-danger'">
+                                            {{ user.estado }}
+                                        </span>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
