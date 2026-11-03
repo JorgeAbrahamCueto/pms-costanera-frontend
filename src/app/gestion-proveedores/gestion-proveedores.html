@@ -1,0 +1,117 @@
+<div class="contenedor-proveedores">
+
+    <!-- PANEL IZQUIERDO -->
+
+    <div class="panel-formulario">
+
+        <h4>DATOS DEL PROVEEDOR</h4>
+
+        <label>RUC (11 dígitos) *</label>
+
+        <div class="grupo-ruc">
+
+            <input type="text" placeholder="Ej: 20123456789" [(ngModel)]="ruc">
+
+            <button (click)="buscarSunat()">
+                Buscar SUNAT
+            </button>
+
+        </div>
+
+        <label>Razón Social (Autocompletado)</label>
+
+        <input type="text" [(ngModel)]="razonSocial" readonly>
+
+        <label>Tipo de Proveedor *</label>
+
+        <select [(ngModel)]="tipoProveedor">
+
+            <option>
+                Seleccione categoría...
+            </option>
+
+            <option>
+                Alimentos y Bebidas
+            </option>
+
+            <option>
+                Limpieza y Lavandería
+            </option>
+
+            <option>
+                Mantenimiento y Equipos
+            </option>
+
+            <option>
+                Servicios Corporativos
+            </option>
+
+        </select>
+
+        <label>Estado Actual</label>
+
+        <input type="text" [value]="estadoSunat" readonly>
+
+        <div class="botones">
+
+            <button class="btn-limpiar">
+                Limpiar
+            </button>
+
+            <button class="btn-guardar" (click)="guardarProveedor()">
+
+                Guardar
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PANEL DERECHO -->
+
+    <div class="panel-tabla">
+
+        <h3>Proveedores</h3>
+
+        <p>Total proveedores: {{ proveedores.length }}</p>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>RUC</th>
+
+                    <th>Razón Social</th>
+
+                    <th>Tipo Proveedor</th>
+
+                    <th>Estado</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let proveedor of proveedores">
+
+                    <td>{{ proveedor.ruc }}</td>
+
+                    <td>{{ proveedor.razonSocial }}</td>
+
+                    <td>{{ proveedor.tipoProveedor }}</td>
+
+                    <td>{{ proveedor.estado }}</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
