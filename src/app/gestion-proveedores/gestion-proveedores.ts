@@ -142,4 +142,48 @@ export class GestionProveedores implements OnInit {
 
   }
 
+  activarProveedor(id: number) {
+
+    this.proveedorService
+      .activarProveedor(id)
+      .subscribe({
+
+        next: () => {
+
+          this.cargarProveedores();
+
+        },
+
+        error: (err: any) => {
+
+          console.error(err);
+
+        }
+
+      });
+
+  }
+
+  desactivarProveedor(id: number) {
+
+    this.proveedorService
+      .desactivarProveedor(id)
+      .subscribe({
+
+        next: () => {
+
+          this.cargarProveedores();
+
+        },
+
+        error: (err: any) => {
+
+          console.error(err);
+
+        }
+
+      });
+
+  }
+
 }

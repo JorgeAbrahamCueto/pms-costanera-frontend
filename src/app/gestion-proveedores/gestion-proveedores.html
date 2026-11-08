@@ -54,8 +54,10 @@
 
         <div class="botones">
 
-            <button class="btn-limpiar">
+            <button type="button" class="btn-limpiar" (click)="limpiarFormulario()">
+
                 Limpiar
+
             </button>
 
             <button class="btn-guardar" (click)="guardarProveedor()">
@@ -90,6 +92,8 @@
 
                     <th>Estado</th>
 
+                    <th>Acciones</th>
+
                 </tr>
 
             </thead>
@@ -105,6 +109,24 @@
                     <td>{{ proveedor.tipoProveedor }}</td>
 
                     <td>{{ proveedor.estado }}</td>
+
+                    <td>
+
+                        <button *ngIf="proveedor.estado === 'ACTIVO'"
+                            (click)="desactivarProveedor(proveedor.idProveedor)">
+
+                            Desactivar
+
+                        </button>
+
+                        <button *ngIf="proveedor.estado === 'INACTIVO'"
+                            (click)="activarProveedor(proveedor.idProveedor)">
+
+                            Activar
+
+                        </button>
+
+                    </td>
 
                 </tr>
 

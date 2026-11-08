@@ -42,4 +42,22 @@ export class ProveedorService {
 
     }
 
+    activarProveedor(id: number): Observable<any> {
+
+        return this.http.patch(
+            `${this.apiUrl}/${id}/activar`,
+            {}
+        );
+
+    }
+
+    desactivarProveedor(id: number): Observable<any> {
+
+        return this.http.patch(
+            `${this.apiUrl}/${id}/desactivar`,
+            {}
+        );
+
+    }
+
 }
