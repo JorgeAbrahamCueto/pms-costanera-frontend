@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core'; // Importa los módulos neces
 import { CommonModule } from '@angular/common'; // Importa el módulo CommonModule para usar directivas comunes de Angular
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importa los módulos necesarios para trabajar con formularios reactivos
 import { UsuarioService } from '../services/usuarios';
+import { AdminNavbar } from '../components/admin-navbar/admin-navbar';
 
 // Define el componente GestionUsuarios con su selector, plantilla y estilos
 @Component({
   selector: 'app-gestion-usuarios',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, AdminNavbar],
   templateUrl: './gestion-usuarios.html',
   styleUrl: './gestion-usuarios.css'
 })

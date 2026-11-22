@@ -9,6 +9,7 @@
 .contenedor-proveedores {
     display: flex;
     gap: 16px;
+    margin-top: 25px;
 }
 
 .panel-formulario {

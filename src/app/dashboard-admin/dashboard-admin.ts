@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminNavbar } from '../components/admin-navbar/admin-navbar';
 
 @Component({
   selector: 'app-dashboard-admin',
-  imports: [],
+  imports: [AdminNavbar],
   templateUrl: './dashboard-admin.html',
   styleUrl: './dashboard-admin.css'
 })

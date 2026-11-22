@@ -3,11 +3,12 @@ import { ProveedorService } from '../services/proveedores';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import { AdminNavbar } from '../components/admin-navbar/admin-navbar';
 
 @Component({
   selector: 'app-gestion-proveedores',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AdminNavbar],
   templateUrl: './gestion-proveedores.html',
   styleUrl: './gestion-proveedores.css'
 })
