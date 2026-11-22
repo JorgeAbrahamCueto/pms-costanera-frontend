@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   selector: 'app-login',
   styleUrl: './login.css',
   templateUrl: './login.html',
@@ -12,12 +13,15 @@ import { Router } from '@angular/router';
 export class Login {
   username: string = '';
   password: string = '';
+  mensajeError: string = '';
 
   constructor(private authService: AuthService, private router: Router) {
 
   }
 
   ingresar() {
+
+    this.mensajeError = '';
 
     this.authService
       .login(
@@ -30,7 +34,8 @@ export class Login {
 
           if (!response.token) {
 
-            alert(response.mensaje);
+            this.mensajeError =
+              response.mensaje;
 
             return;
 
@@ -52,22 +57,14 @@ export class Login {
               ['/dashboard-admin']
             );
 
-          }
-
-          console.log(
-            'Token guardado'
-          );
-
-          console.log(
-            'Rol:',
-            response.rol
-          );
+          } 
 
         },
 
-        error: (err) => {
+        error: () => {
 
-          console.error(err);
+          this.mensajeError =
+            'Error de conexión con el servidor';
 
         }
 

@@ -1,27 +1,35 @@
-<div>
+<div class="login-container">
 
-    <h2>Hotel Costanera</h2>
+    <div class="logo-section">
 
-    <input
-        type="text"
-        placeholder="Usuario"
-        [(ngModel)]="username">
+        <img src="costaneralogo.png" alt="Costanera Hotel">
 
-    <br><br>
+    </div>
 
-    <input
-        type="password"
-        placeholder="Contraseña"
-        [(ngModel)]="password">
+    <div class="form-section">
 
-    <br><br>
+        <div class="login-card">
 
-    <button
-        type="button"
-        (click)="ingresar()">
+            <h2>Iniciar Sesión</h2>
 
-        Ingresar
+            <div class="mensaje-error" *ngIf="mensajeError">
 
-    </button>
+                {{ mensajeError }}
+
+            </div>
+
+            <input type="text" placeholder="Usuario" [(ngModel)]="username">
+
+            <input type="password" placeholder="Contraseña" [(ngModel)]="password">
+
+            <button type="button" (click)="ingresar()">
+
+                INGRESAR
+
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
