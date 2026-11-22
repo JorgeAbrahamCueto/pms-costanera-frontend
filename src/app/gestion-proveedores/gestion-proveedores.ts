@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProveedorService } from '../services/proveedores';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-gestion-proveedores',
@@ -23,7 +24,8 @@ export class GestionProveedores implements OnInit {
   tipoProveedor: string = '';
 
   constructor(
-    private proveedorService: ProveedorService
+    private proveedorService: ProveedorService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class GestionProveedores implements OnInit {
         next: (data) => {
 
           this.proveedores = [...data];
+          this.cdr.detectChanges();
 
         },
 
@@ -142,48 +145,56 @@ export class GestionProveedores implements OnInit {
 
   }
 
-  activarProveedor(id: number) {
+activarProveedor(id: number) {
 
-    this.proveedorService
-      .activarProveedor(id)
-      .subscribe({
+  this.proveedorService
+    .activarProveedor(id)
+    .subscribe({
 
-        next: () => {
+      next: () => {
 
+        this.cargarProveedores();
+
+        setTimeout(() => {
           this.cargarProveedores();
+        }, 500);
 
-        },
+      },
 
-        error: (err: any) => {
+      error: (err: any) => {
 
-          console.error(err);
+        console.error(err);
 
-        }
+      }
 
-      });
+    });
 
-  }
+}
 
   desactivarProveedor(id: number) {
 
-    this.proveedorService
-      .desactivarProveedor(id)
-      .subscribe({
+  this.proveedorService
+    .desactivarProveedor(id)
+    .subscribe({
 
-        next: () => {
+      next: () => {
 
+        this.cargarProveedores();
+
+        setTimeout(() => {
           this.cargarProveedores();
+        }, 500);
 
-        },
+      },
 
-        error: (err: any) => {
+      error: (err: any) => {
 
-          console.error(err);
+        console.error(err);
 
-        }
+      }
 
-      });
+    });
 
-  }
+}
 
 }

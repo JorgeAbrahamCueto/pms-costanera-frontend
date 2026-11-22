@@ -112,14 +112,14 @@
 
                     <td>
 
-                        <button *ngIf="proveedor.estado === 'ACTIVO'"
+                        <button type="button" *ngIf="proveedor.estado === 'ACTIVO'"
                             (click)="desactivarProveedor(proveedor.idProveedor)">
 
                             Desactivar
 
                         </button>
 
-                        <button *ngIf="proveedor.estado === 'INACTIVO'"
+                        <button type="button" *ngIf="proveedor.estado === 'INACTIVO'"
                             (click)="activarProveedor(proveedor.idProveedor)">
 
                             Activar
