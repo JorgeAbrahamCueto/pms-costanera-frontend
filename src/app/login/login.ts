@@ -57,7 +57,23 @@ export class Login {
               ['/dashboard-admin']
             );
 
-          } 
+          }
+
+          if (response.rol === 'RECEPCIONISTA') {
+
+            this.router.navigate(
+              ['/dashboard-recepcion']
+            );
+
+          }
+
+          if (response.rol === 'HOUSEKEEPING') {
+
+            this.router.navigate(
+              ['/dashboard-housekeeping']
+            );
+
+          }
 
         },
 

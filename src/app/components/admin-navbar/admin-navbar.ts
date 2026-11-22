@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
   styleUrl: './admin-navbar.css'
 })
 export class AdminNavbar {
+irRecepcion() {
+throw new Error('Method not implemented.');
+}
 
   constructor(
     private router: Router
