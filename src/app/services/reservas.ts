@@ -9,7 +9,7 @@ export class ReservasService {
 
   private apiUrl = 'http://localhost:8080/reservas';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   listarReservas(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
@@ -27,6 +27,7 @@ export class ReservasService {
       `${this.apiUrl}/${id}/checkin`,
       {}
     );
+
   }
 
   realizarCheckout(id: number): Observable<any> {

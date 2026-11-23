@@ -51,6 +51,11 @@ export class Login {
             response.rol
           );
 
+          localStorage.setItem(
+            'idUsuario',
+            response.idUsuario
+          );
+
           if (response.rol === 'ADMINISTRADOR') {
 
             this.router.navigate(

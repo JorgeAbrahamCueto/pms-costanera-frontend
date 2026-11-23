@@ -132,6 +132,32 @@
 
                 </select>
 
+                <div class="col-md-4">
+
+                  <label class="form-label">
+
+                    Cantidad de Huéspedes
+
+                  </label>
+
+                  <input type="number" min="1" formControlName="cantidadHuespedes" class="form-control form-control-sm">
+
+                </div>
+
+              </div>
+
+              <div class="col-md-12">
+
+                <label class="form-label">
+
+                  Observaciones
+
+                </label>
+
+                <textarea formControlName="observaciones" class="form-control form-control-sm">
+
+  </textarea>
+
               </div>
 
             </div>
@@ -144,7 +170,7 @@
 
               </button>
 
-              <button type="submit" class="btn btn-dark">
+              <button type="button" (click)="confirmarReserva()" class="btn btn-dark">
 
                 Confirmar Reserva
 

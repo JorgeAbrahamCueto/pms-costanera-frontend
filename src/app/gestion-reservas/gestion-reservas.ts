@@ -36,7 +36,11 @@ export class GestionReservas implements OnInit {
 
       checkout: ['', Validators.required],
 
-      habitacion: ['', Validators.required]
+      habitacion: ['', Validators.required],
+
+      cantidadHuespedes: [1, Validators.required],
+
+      observaciones: ['']
 
     });
 
@@ -74,6 +78,77 @@ export class GestionReservas implements OnInit {
       });
 
   }
+
+ confirmarReserva() {
+
+  const reserva = {
+
+    habitacion: {
+      idHabitacion: Number(
+        this.reservaForm.value.habitacion
+      )
+    },
+
+    usuario: {
+      idUsuario: Number(
+        localStorage.getItem('idUsuario')
+      )
+    },
+
+    estadoReserva: {
+      idEstadoReserva: 1
+    },
+
+    canalReserva: {
+      idCanal: 1
+    },
+
+    fechaHoraCheckinProgramado:
+      this.reservaForm.value.checkin,
+
+    fechaHoraCheckoutProgramado:
+      this.reservaForm.value.checkout,
+
+    cantidadHuespedes:
+      this.reservaForm.value.cantidadHuespedes,
+
+    observaciones:
+      this.reservaForm.value.observaciones
+
+  };
+
+  console.log('Reserva a enviar:', reserva);
+
+  this.reservasService
+    .crearReserva(reserva)
+    .subscribe({
+
+      next: (response: any) => {
+
+        console.log(
+          'Reserva creada:',
+          response
+        );
+
+        alert(
+          'Reserva registrada correctamente'
+        );
+
+      },
+
+      error: (err: any) => {
+
+        console.error(err);
+
+        alert(
+          'Error al registrar la reserva'
+        );
+
+      }
+
+    });
+
+}
   ngOnInit(): void {
 
     this.reservaForm.get('checkin')?.valueChanges.subscribe(() => {
