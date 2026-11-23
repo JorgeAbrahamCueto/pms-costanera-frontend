@@ -22,6 +22,14 @@ export class RecepNavbar {
 
   }
 
+  irReservas() {
+
+    this.router.navigate(
+      ['/gestion-reservas']
+    );
+
+  }
+
 
   irHabitaciones() {
 
